@@ -34,6 +34,9 @@ class Application extends CI_Controller {
         $this->data['menubar'] = $this->parser->parse('_menubar', $this->config->item('menu_choices'),true);
         $this->data['content'] = $this->parser->parse($this->data['pagebody'], $this->data, true);
 
+        /* Set seesion ID for viewing */
+        $this->data['sessionid'] = session_id();
+        
         // finally, build the browser page!
         $this->data['data'] = &$this->data;
         $this->parser->parse('_template', $this->data);
